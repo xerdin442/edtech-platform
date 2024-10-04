@@ -2,9 +2,6 @@ const LandingPage=()=>{
 
     return(
         <>
-            <main>
-                Hello world
-            </main>
         </>
     )
 }

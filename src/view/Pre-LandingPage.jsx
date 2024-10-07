@@ -7,6 +7,15 @@ const PreLandingPage = () => {
   const navigate = useNavigate();
   const [eduVisible, setEduVisible] = useState(false);
 
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate('/landing-page');
+    },  4500); 
+
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setEduVisible(true);

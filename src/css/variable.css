@@ -1,0 +1,10 @@
+:root {
+    --primary-color: rgba(217, 217, 217, 1);
+    --border-color: rgba(226, 233, 246, 1);
+    --background-color: rgba(255, 255, 255, 1);
+    --background-color-secondary:rgba(0, 47, 73, 1);
+    --font-size-base: 16px;
+    --font-family: Inter;
+    --secondary-color:rgba(248, 251, 253, 1);
+    --secondary-color-2:rgba(4, 24, 34, 1);
+  }

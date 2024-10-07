@@ -44,6 +44,8 @@ const PreLandingPage = () => {
                 {char}
               </motion.span>
             ))}
+
+<div className="light-effect" /> {/* Passing light effect */}
           </h1>
         </div>
       )}

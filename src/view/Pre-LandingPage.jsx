@@ -19,7 +19,7 @@ const PreLandingPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setEduVisible(true);
-    }, 2000);
+    }, 2100);
     return () => clearTimeout(timer);
   }, []);
 

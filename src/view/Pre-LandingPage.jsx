@@ -19,7 +19,7 @@ const PreLandingPage = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setEduVisible(true);
-    }, 2800);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,8 +38,8 @@ const PreLandingPage = () => {
               <motion.span
                 key={index}
                 initial={{ opacity: 0, x: -10 }} 
-                animate={{ opacity: 1, x: 0 }} 
-                transition={{ delay: index * 0.2 }} 
+                animate={{ opacity: 1, x: 1 }} 
+                transition={{ delay: index * 0.1 }} 
               >
                 {char}
               </motion.span>

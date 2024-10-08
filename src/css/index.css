@@ -14,83 +14,6 @@ body{
   overflow-x: hidden;
 }
 
-/* pre loading page */
-.prelandingPage {
-  background-color: var(--background-color-secondary);
-  padding: 0;
-  margin: 0;
-  height: 100vh; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.forPreLandingPageIcon {
-  animation: slideInIcon 2.5s ease-out forwards;
-}
-
-/* Define the animation */
-@keyframes slideInIcon {
-  0% {
-    transform: translateY(100%); 
-    opacity: 0;
-  }
-  80% {
-    transform: translateY(-40%); 
-    opacity: 1;
-  }
-  60% {
-    transform: translateY(20%); 
-    opacity: 1; 
-  }
-  40% {
-    transform: translateY(-30%); 
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.forPreLandingPageIcon img {
-  max-width: 100%; 
-  height: auto;
-}
-
-.forPreLandingPageLogo{
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-.forPreLandingPageLogo h1{
-  font-family: 'Montserrat';
-  font-size: 207.46px;
-  line-height: 180.16px;
-  font-weight: 700;
-  color: var(--secondary-color);
-}
-.forPreLandingPageLogo h1 .spanLogo{
-  font-weight: 400;
-}
-/* .light-effect {
-  position: absolute; 
-  width: 100%; 
-  height: 5px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 100%); 
-  bottom: -10px; 
-  animation: slide 2.5s forwards; 
-} */
-
-/* @keyframes slide {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%); 
-  }
- 
-} */
 /* landing page header */
 .landingPageHeader{
   
@@ -168,23 +91,6 @@ body{
 }
 /* for device with a max width of 780px (tablets and below) */
 @media (max-width: 768px){
-  .prelandingPage {
-    /* flex-direction: column; */
-    padding: 10px;
-    
-  }
-
-  .forPreLandingPageIcon img {
-    height: 100px;
-    width: 100px;
-  }
-
-  .forPreLandingPageLogo h1{
-    font-size: 50px;
-    line-height: 1.2;
-  }
-
-
   .sectionLandingPageHeader{
     flex-direction: column;
     height: auto;
@@ -218,10 +124,6 @@ body{
 }
 
 @media (max-width: 480px) {
-  .forPreLandingPageLogo h1{
-    font-size: 36px;
-  }
-
   .titleContainer img {
     width: 30px;
   }
@@ -268,7 +170,3 @@ body{
   }
 }
 
-
-
-
-/* landing page */

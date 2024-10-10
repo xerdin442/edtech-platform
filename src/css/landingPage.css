@@ -657,6 +657,12 @@ margin-bottom: 1rem;
   width: 24px;
 height: 24px;
 }
+.faq-question span img{
+transition: cursor .3s ease-in-out;
+}
+.faq-question span img:hover{
+  cursor: pointer;
+}
 .faq-answer p{
   color: #59676E;
 font-size: 16px;

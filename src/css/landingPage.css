@@ -1,21 +1,28 @@
 /* landing page header */
 .landingPageHeader {
-  text-align: center;
   background-color: var(--background-color-secondary);
 }
 .sectionLandingPageHeader {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  width: 1440px;
   height: 128px;
   padding: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 72px;
+  flex-shrink: 0;
 }
 .titleContainer {
   display: flex;
   align-items: center;
+  width: 276px;
+height: 56px;
+flex-shrink: 0;
 }
 .titleContainer img {
   width: 46px;
+height: 40px;
+flex-shrink: 0;
 }
 .titleContainer h4 {
   font-size: 50px;
@@ -23,6 +30,9 @@
   font-family: "Montserrat";
   line-height: 60.95px;
   color: var(--secondary-color);
+  width: 212px;
+height: 56px;
+flex-shrink: 0;
 }
 .titleContainer h4 span {
   font-weight: 400;
@@ -31,10 +41,11 @@
   list-style: none;
   display: flex;
   align-items: center;
+  height: 52px;
   gap: 35px;
 }
 .sectionLandingPageHeader nav ul li {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 20px;
   color: #d2d3d5;
@@ -54,6 +65,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  height: 52px;
   gap: 25px;
 }
 .landingPageHeaderBtn .login {
@@ -65,7 +77,7 @@
   border-radius: 33px;
   border: 1px;
   padding: 15px 10px;
-  gap: 10px;
+  gap: 5px;
   background-color: var(--background-color-secondary);
   border: 1px solid var(--border-color);
   font-weight: 700;
@@ -76,7 +88,7 @@
 .landingPageHeaderBtn .create-account {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   width: 215px;
   height: 52px;
   border-radius: 33px;
@@ -170,8 +182,8 @@
 
 /* landing page */
 .landingPageContainer {
-  width: 1440px;
-  height: 5424px;
+  width: 100%;
+  height: auto;
   background: #f8f9fa;
 }
 
@@ -187,18 +199,12 @@
   width: 1094px;
   flex-direction: column;
   align-items: center;
-  position: relative;
-}
-.firstPart img {
-  position: absolute;
-  right: 3rem;
-  bottom: 8rem;
 }
 .firstPart .divFirstPart h4 {
   width: 1063px;
   color: var(--secondary-color-2);
   text-align: center;
-  font-size: 64px;
+  font-size: 50px;
   font-style: normal;
   font-weight: 700;
   line-height: 75.036px;
@@ -207,17 +213,12 @@
 }
 .firstPart .divFirstPart h4 span {
   color: var(--Secondary-Color, #4b8bbe);
-  font-size: 64px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 75.036px;
-  text-transform: capitalize;
 }
 .firstPart .divFirstPart p {
   width: 1063px;
   color: var(--Grey, #59676e);
   text-align: center;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 25.012px;
@@ -240,6 +241,7 @@
   font-style: normal;
   font-weight: 700;
   line-height: 24px;
+  margin-top: 2rem;
 }
 .secondPart img {
   width: 959px;
@@ -255,29 +257,32 @@
   background: #f8f9fa;
   filter: blur(30px);
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   width: 1290px;
-  height: 240px;
+  height: 200px;
   flex-shrink: 0;
+  margin-bottom: 0;
 }
 .thirdPart {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 0;
 }
 .whatToGet {
   display: flex;
   height: 75px;
   padding: 23px 444px;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
   align-self: stretch;
   background-color: var(--background-color-secondary);
   color: rgba(248, 249, 250, 1);
-  font-size: 24px;
+}
+.whatToGet h6{
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   line-height: 30px;
@@ -285,6 +290,7 @@
 }
 .aboutUs {
   display: flex;
+  align-items: center;
   gap: 50px;
   justify-content: center;
   margin-top: 4rem;
@@ -302,7 +308,7 @@
   align-items: flex-start;
   gap: 0px;
 }
-.about-write-up-header {
+/* .about-write-up-header {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -315,12 +321,12 @@
   font-weight: 400;
   line-height: 20px;
   text-transform: capitalize;
-}
+} */
 
 .aboutWriteUp h3,
 .uniqueFeatures h3{
   color: var(--secondary-color-2);
-  font-size: 36px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: 49px;
@@ -508,24 +514,25 @@ margin-top: 5rem;
 
 .fourthPartContainer2{
   display: flex;
-  flex-direction: column;
-align-items: flex-start;
+align-items: center;
+gap: 73px;
+align-self: stretch;
 }
-.fourth-part-header{
+/* .fourth-part-header{
   display: flex;
   align-items: center;
   gap: 5px;
-}
+} */
 .fourth-part-1{
   display: flex;
 width: 589px;
 flex-direction: column;
 align-items: flex-start;
-gap: 46px;
+/* gap: 46px; */
 }
 .fourth-part-1 h3{
   color: var(--secondary-color-2);
-  font-size: 36px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 600;
   line-height: 49px;
@@ -539,6 +546,8 @@ gap: 46px;
 .fourth-part-1 ul {
   list-style: none;
   padding-left: 0;
+  margin-top: 0;
+  padding-top: 0;
 }
 .fourth-part-1 ul li{
   display: flex;
@@ -551,14 +560,12 @@ gap: 46px;
 width: 60px;
 height: 58px;
 padding: 10px;
-flex-direction: column;
 justify-content: center;
 align-items: center;
 gap: 10px;
 border-radius: 50px;
 background: #002F49;
 color: #F8FBFD;
-text-align: center;
 font-size: 40px;
 font-style: normal;
 font-weight: 600;
@@ -570,21 +577,23 @@ border: none;
 font-family: Inter;
 font-size: 20px;
 font-style: normal;
-font-weight: 500;
+font-weight: bold;
 line-height: 24px; /* 120% */
 text-transform: capitalize;
 align-self: stretch;
 margin-bottom: 0;
+padding-bottom: 0;
 }
 .fourth-part-1 ul li p{
   color: #041822;
 font-family: Inter;
-font-size: 18px;
+font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: 30px; /* 166.667% */
 height: 60px;
 align-self: stretch;
+margin-top: 5px;
 }
 .fourth-part-2 img{
   width: 592px;
@@ -605,6 +614,15 @@ margin-top: 5rem;
   align-items: center;
   justify-content: center;
   gap: 5px;
+}
+.fifthPartContainer2 header div h6{
+  color: #59676E;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px;
+text-transform: capitalize;
 }
 .fifthPartContainer2 h3{
   color: var(--secondary-color-2);
@@ -627,9 +645,6 @@ font-size: 20px;
 font-style: normal;
 font-weight: 400;
 line-height: 30px
-}
-.faq-section{
-  
 }
 .faq-item{
   display: flex;
@@ -670,4 +685,98 @@ font-style: normal;
 font-weight: 400;
 line-height: 24px; 
 align-self: stretch;
+}
+
+.still-question{
+  display: flex;
+padding: 32px;
+flex-direction: column;
+/* align-items: center; */
+/* gap: 32px; */
+align-self: stretch;
+border-radius: 16px;
+border: 1px solid var(--Border, #E2E9F6);
+background: var(--Text-color-2, #F8FBFD);
+margin-top: 5rem;
+}
+.still-question-2 {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+align-items: center;
+gap: 32px;
+align-self: stretch;
+}
+
+.still-question-img-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.still-question-img-container img {
+  width: 48px;
+height: 48px;
+border-radius: 200px;
+border: 1.5px solid #FFF;
+background: var(--avatar-user-square-alec-whitten-color-background, url(<path-to-image>) lightgray 50% / cover no-repeat, #ABB677);
+  margin-left: -15px; 
+  position: relative;
+  z-index: 1;
+}
+
+.still-question-img-container .img_1{
+  width: 56px;
+height: 56px;
+z-index: 2;
+}
+.still-question-2 h6{
+  color: #041822;
+text-align: center;
+font-size: 20px;
+font-style: normal;
+font-weight: bold;
+line-height: 30px;
+align-self: stretch;
+margin-top: 0;
+margin-bottom: 5px;
+padding-bottom: 0;
+}
+.still-question-2 p{
+  width: 768px;
+  color: #59676E;
+text-align: center;
+font-family: "Open Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 28px;
+margin-top: 0;
+padding-top: 0;
+margin-bottom: 0;
+  padding-bottom: 0;
+}
+.still-question-2 button{
+  display: flex;
+width: 242px;
+height: 42px;
+padding: 13px 10px;
+justify-content: center;
+align-items: center;
+gap: 10px;
+border-radius: 22px;
+background: #002F49;
+border: none;
+overflow: hidden;
+color: #F8FBFD;
+text-overflow: ellipsis;
+font-family: "Open Sans";
+font-size: 14px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; 
+}
+.still-question-2 button img{
+width: 24px;
+height: 24px;
 }

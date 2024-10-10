@@ -5,7 +5,7 @@ import './css/index.css'
 import './css/variable.css'
 import './css/preLoading.css'
 import './css/landingPage.css'
-
+import './css/footer.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

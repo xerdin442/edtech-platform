@@ -46,7 +46,7 @@ const LandingPageHeader=()=>{
 
                 {/* third part */}
                 <div className="landingPageHeaderBtn">
-                    <button className="login">Log in <GoArrowUpRight/></button>
+                    <button className="login">Log in <GoArrowRight/></button>
                     <button className="create-account">Create account<GoArrowRight/></button>
                 </div>
                 </section>

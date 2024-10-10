@@ -1,0 +1,116 @@
+.footerContainer{
+    display: flex;
+width: 1440px;
+height: auto;
+padding: 37px 0px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 43px;
+flex-shrink: 0;
+background-color: #041822;
+margin-top: 6rem;
+}
+.footerContainer2{
+    display: flex;
+width: 1328px;
+height: 284px;
+padding: 3px 60px;
+align-items: center;
+flex-wrap: wrap;
+gap: 24px;
+flex-shrink: 0;
+color: rgba(248, 251, 253, 1);
+}
+.footerContainer2 .section-footer-1 h3 img{
+    width: 46px;
+height: 40px;
+flex-shrink: 0;
+}
+
+.footerContainer2 .section-footer-1 h3{
+color: #F8FBFD;
+font-family: Montserrat;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.footerContainer2 .section-footer-1 h3 span{
+    font-weight: 400;
+}
+.footerContainer2 .section-footer-1 p{
+    width: 370px;
+    color:  #F8FBFD;
+font-family: "Open Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-bottom: 3rem;
+}
+.footerContainer2 .section-footer-1 .socials{
+    display: flex;
+align-items: flex-start;
+gap: 40px;
+}
+.footerContainer2 ul{
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 30px;
+}
+.section-lower{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+gap: 40px;
+flex-shrink: 0;
+}
+
+.section-lower .section-footer{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+}
+.section-lower .section-footer
+h6{
+    color: #F8FBFD;
+text-align: center;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+line-height: 30px;
+text-transform: capitalize;
+margin-bottom: 5px;
+}
+.section-lower .section-footer li{
+    color: #F8FBFD;
+font-family: "Open Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.section-lower .section-footer p{
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    letter-spacing: 0.05px;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.section-footer-under p{
+    color: var(--Text-color-2, #F8FBFD);
+font-family: "SF Pro Display";
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+letter-spacing: 0.05px;
+}

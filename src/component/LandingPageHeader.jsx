@@ -1,6 +1,12 @@
 import LandingPageIcon from '/LandingPageIcon.svg';
 import { GoArrowUpRight, GoArrowRight} from "react-icons/go";
+import { useState } from 'react';
 const LandingPageHeader=()=>{
+    const [highlightHeader,setHighlightHeader] = useState("home")
+
+    const handleHighlightHeader =(name)=>{
+        setHighlightHeader(name)
+    }
     return(
         <>
             <header className="landingPageHeader">
@@ -15,10 +21,24 @@ const LandingPageHeader=()=>{
                 {/* second part */}
                 <nav>
                     <ul>
-                        <li className="home">Home</li>
-                        <li className="about">About Us</li>
-                        <li className="contact">Contact us</li>
-                        <li className="blog">
+                        <li onClick={() => handleHighlightHeader("home")} 
+                      className={`home ${
+                        highlightHeader === "home" ? "Highlight" : ""
+                      }`} >Home</li>
+
+                        <li onClick={() => handleHighlightHeader("about")} 
+                      className={`about ${
+                        highlightHeader === "about" ? "Highlight" : ""
+                      }`}>About Us</li>
+
+                        <li onClick={() => handleHighlightHeader("contact")} 
+                      className={`contact ${
+                        highlightHeader === "contact" ? "Highlight" : ""
+                      }`}>Contact us</li>
+                        <li onClick={() => handleHighlightHeader("blog")} 
+                      className={`blog ${
+                        highlightHeader === "blog" ? "Highlight" : ""
+                      }`}>
                         Blog
                         </li>
                     </ul>

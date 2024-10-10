@@ -51,7 +51,7 @@
   }
   .forPreLandingPageLogo h1{
     font-family: 'Montserrat';
-    font-size: 207.46px;
+    font-size: 200px;
     line-height: 180.16px;
     font-weight: 700;
     color: var(--secondary-color);
@@ -104,7 +104,7 @@
       font-size: 36px;
     }
     .forPreLandingPageIcon img {
-        height: 80px;
-        width: 80px;
+        height: 40px;
+        width: 60px;
       }
 }

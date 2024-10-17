@@ -13,6 +13,7 @@ import { Server, WebSocket } from 'ws';
 
 import router from './shared/index.router';
 import sessionDts from '../types/session';
+import expressDts from '../types/express';
 
 // Initialize express app and create a server
 const app = express()
@@ -62,5 +63,5 @@ wss.on('connection', (ws, req) => {
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     server.listen(process.env.PORT)
-    console.log('Server is running on port 3000')
+    console.log(`Server is running on port ${process.env.PORT}`)
   }).catch(err => console.log(err))

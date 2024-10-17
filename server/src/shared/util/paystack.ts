@@ -1,4 +1,4 @@
-import axios from "axios/";
+import axios from "axios"
 
 interface paystackBankDetails {
   id: number
@@ -117,14 +117,14 @@ export const deleteTransferRecipient = async (code: string) => {
   }
 }
 
-export const initiateTransfer = async (code: string, amount: number, reason: string, metadata: Record<string, any>) => {
+export const initiateTransfer = async (recipient: string, amount: number, reason: string, metadata: Record<string, any>) => {
   const url = 'https://api.paystack.co/transfer'
   const transfer = await axios.post(url,
     {
       "amount": amount,
       "reason": reason,
       "source": "balance",
-      "recipient": code,
+      "recipient": recipient,
       "currency": "NGN",
       "metadata": metadata
     },

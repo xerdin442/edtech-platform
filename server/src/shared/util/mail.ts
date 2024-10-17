@@ -10,8 +10,8 @@ export const sendEmail = async (school: ISchool, subject: string, content: strin
 
   const data = {
     sender: {
-      name: 'Event Ticketing App',
-      email: 'mudianthonio27@gmail.com',
+      name: 'Edudesks Team',
+      email: 'anitanwosu25@gmail.com',
     },
     to: [
       {
@@ -49,7 +49,7 @@ export const passwordResetMail = (school: ISchool) => {
   return content;
 }
 
-export const emaileVerificationMail = (school: ISchool) => {
+export const emailVerificationMail = (school: ISchool) => {
   const content = `
     <p>Hello ${school.name},</p>
     <h1>${school.otp}</h1>

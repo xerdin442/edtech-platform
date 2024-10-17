@@ -11,6 +11,8 @@ export interface ISchool extends Document {
   pin: number
   otp?: number,
   otpExpiration?: number
+  otpSubject?: string
+  recipient?: string
   bankDetails?: { accountName: string, accountNumber: string, bankName: string }
 }
 
@@ -25,6 +27,8 @@ const schoolSchema = new Schema<ISchool>({
   pin: { type: Number, required: true, default: 0 },
   otp: { type: Number },
   otpExpiration: { type: Number },
+  otpSubject: { type: String },
+  recipient: { type: String },
   bankDetails: {
     accountName: { type: String },
     accountNumber: { type: String },

@@ -1,4 +1,5 @@
 import { School } from './school.model';
+import { createTransferRecipient } from '../shared/util/paystack';
 
 export const getSchoolById = async (id: string) => {
   const school = await School.findById(id)
@@ -20,11 +21,19 @@ export const createSchool = async (values: Record<string, any>) => {
   }
   await school.save();
 
-  return school.toObject();
+  return school;
 }
 
 export const updateProfile = async (id: string, values: Record<string, any>) => {
-  return await School.findByIdAndUpdate(id, values, { new: true })
+  const school = await School.findByIdAndUpdate(id, values, { new: true })
+  if (!school) {
+    throw new Error('An error occured while updating school profile')
+  }
+
+  // school.recipient = await createTransferRecipient(school.bankDetails)
+  // await school.save()
+
+  return school;
 }
 
 export const deleteSchool = (id: string) => {

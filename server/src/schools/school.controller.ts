@@ -141,7 +141,7 @@ export const verifyOTP = async (req: Request, res: Response) => {
 
     // Check if the OTP has expired
     if (school.otpExpiration < Date.now()) {
-      res.status(422).json({ error: 'This OTP has expired. Resend another OTP to your email' })
+      res.status(422).json({ error: 'This OTP has expired' })
       return;
     }
 

@@ -25,8 +25,7 @@ export const register = async (req: Request, res: Response) => {
     })
 
     // If school check is successful, generate OTP and set the expiration time
-    const random = `${Math.random() * 10 ** 16}`
-    const otp = random[3] + random[9] + random[6] + random[12]
+    const otp = `${Math.random() * 10 ** 16}`.slice(3, 7)
     school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     school.otpSubject = 'Email Verification'
@@ -107,8 +106,7 @@ export const resetPassword = async (req: Request, res: Response) => {
     }
 
     // If school check is successful, generate OTP and set the expiration time
-    const random = `${Math.random() * 10 ** 16}`
-    const otp = random[3] + random[9] + random[6] + random[12]
+    const otp = `${Math.random() * 10 ** 16}`.slice(3, 7)
     school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     school.otpSubject = 'Password Reset'
@@ -171,8 +169,7 @@ export const resendOTP = async (req: Request, res: Response) => {
     }
 
     // Generate new OTP, reset the expiration time and save changes
-    const random = `${Math.random() * 10 ** 16}`
-    const otp = random[3] + random[9] + random[6] + random[12]
+    const otp = `${Math.random() * 10 ** 16}`.slice(3, 7)
     school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     await school.save()

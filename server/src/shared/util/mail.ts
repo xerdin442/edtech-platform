@@ -41,9 +41,19 @@ export const sendEmail = async (school: ISchool, subject: string, content: strin
 
 export const passwordResetMail = (school: ISchool) => {
   const content = `
-    <p>Hello ${school.name.split(' ')[0]},</p>
-    <h1>${school.OTP}</h1>
-    <p>You requested for a password reset. This code expires in <b>3 hours.</b></p>
+    <p>Hello ${school.name},</p>
+    <h1>${school.otp}</h1>
+    <p>You requested for a password reset. This code expires in <b>1 hour1.</b></p>
+    <p>If this wasn't you, please ignore this email.</p>`
+  
+  return content;
+}
+
+export const emaileVerificationMail = (school: ISchool) => {
+  const content = `
+    <p>Hello ${school.name},</p>
+    <h1>${school.otp}</h1>
+    <p>Verify this code to confirm that this email address belongs to you. This code expires in <b>1 hour.</b></p>
     <p>If this wasn't you, please ignore this email.</p>`
   
   return content;

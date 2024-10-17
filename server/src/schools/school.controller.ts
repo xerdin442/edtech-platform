@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 
 import * as School from './school.service';
-import { emaileVerificationMail, passwordResetMail, sendEmail } from '../shared/util/mail'
+import { emailVerificationMail, passwordResetMail, sendEmail } from '../shared/util/mail'
 import { verifyAccountDetails } from '../shared/util/paystack';
 
 export const register = async (req: Request, res: Response) => {
@@ -25,13 +25,15 @@ export const register = async (req: Request, res: Response) => {
     })
 
     // If school check is successful, generate OTP and set the expiration time
-    school.otp = Math.ceil(Math.random() * 10 ** 4)
+    const random = `${Math.random() * 10 ** 16}`
+    const otp = random[3] + random[9] + random[6] + random[12]
+    school.otp = +otp 
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     await school.save()
 
     // Send the email verification OTP to the school email address
     const subject = 'Email Verification'
-    const emailContent = emaileVerificationMail(school)
+    const emailContent = emailVerificationMail(school)
     await sendEmail(school, subject, emailContent)
 
     // Create and sign an authentication token that expires in 3 hours
@@ -102,7 +104,9 @@ export const resetPassword = async (req: Request, res: Response) => {
     }
 
     // If school check is successful, generate OTP and set the expiration time
-    school.otp = Math.ceil(Math.random() * 10 ** 4)
+    const random = `${Math.random() * 10 ** 16}`
+    const otp = random[3] + random[9] + random[6] + random[12]
+    school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     await school.save()
 
@@ -167,7 +171,9 @@ export const resendOTP = async (req: Request, res: Response) => {
     }
 
     // Generate new OTP, reset the expiration time and save changes
-    school.otp = Math.ceil(Math.random() * 10 ** 4)
+    const random = `${Math.random() * 10 ** 16}`
+    const otp = random[3] + random[9] + random[6] + random[12]
+    school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     await school.save()
 
@@ -260,11 +266,10 @@ export const getProfile = async (req: Request, res: Response) => {
 export const updateProfile = async (req: Request, res: Response) => {
   try {
     const schoolId = req.session.school.id
-    const { name, email, address, phone, accountNumber, accountName, bankName } = req.body
+    let { name, email, address, phone, accountNumber, accountName, bankName, logo } = req.body
 
     const { verified, unverified } = await verifyAccountDetails(req.body) // Verify the school's account details
 
-    let logo;
     if (!req.file) {
       logo = process.env.DEFAULT_IMAGE // Use a default image if no file is uploaded
     } else {
@@ -282,15 +287,11 @@ export const updateProfile = async (req: Request, res: Response) => {
           bankDetails: { accountName, accountNumber, bankName }
         }
       )
-      if (!school) {
-        res.status(400).json({ error: "An error occured while updating school profile" })
-        return;
-      }
 
       res.status(200).json({ message: "Profile updated successfully", school }).end()
       return;
     } else if (unverified) {
-      res.status(422).json({ error: 'Bank verification unsuccessful. Kindly input your account name or number in the correct order' })
+      res.status(422).json({ error: 'Bank verification unsuccessful. Kindly input your account details in the correct order' })
       return;
     }
   } catch (error) {

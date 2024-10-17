@@ -5,7 +5,7 @@ import { isLoggedIn } from '../shared/middleware/authorization';
 import { upload } from '../shared/config/storage';
 import {
   handleValidationErrors,
-  validateUpdateProfile,
+  validateProfileUpdate,
   validateLogin,
   validatePasswordReset,
   validateSignUp
@@ -24,6 +24,6 @@ export default (router: express.Router) => {
 
   // Profile
   router.get('/profile', isLoggedIn, School.getProfile)
-  router.put('/profile/update', upload('event-ticketing').single('profileImage'), isLoggedIn, validateUpdateProfile, handleValidationErrors, School.updateProfile)
+  router.put('/profile/update', upload('event-ticketing').single('profileImage'), isLoggedIn, validateProfileUpdate, handleValidationErrors, School.updateProfile)
   router.delete('/profile/delete', isLoggedIn, School.deleteAccount)
 };

@@ -49,7 +49,7 @@ export const passwordResetMail = (school: ISchool) => {
   return content;
 }
 
-export const emaileVerificationMail = (school: ISchool) => {
+export const emailVerificationMail = (school: ISchool) => {
   const content = `
     <p>Hello ${school.name},</p>
     <h1>${school.otp}</h1>

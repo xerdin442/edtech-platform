@@ -4,7 +4,7 @@ import { JwtPayload } from 'jsonwebtoken';
 
 declare module 'express-session' {
   interface SessionData {
-    user: JwtPayload;
+    school: JwtPayload;
     email: string
   }
 }

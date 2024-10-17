@@ -110,7 +110,8 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
       })
     }
 
-    return res.status(422).json({ error })
+    res.status(422).json({ error })
+    return;
   }
 
   next() // Proceed to next middleware if there are no errors

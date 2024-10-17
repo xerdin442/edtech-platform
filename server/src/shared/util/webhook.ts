@@ -50,8 +50,8 @@ const pasytackCallback = async (req: Request, res: Response) => {
     res.status(400).send('Invalid signature')
     return;
   } catch (error) {
+    console.log(error)
     res.sendStatus(500)
-    console.log(500)
   }
 }
 
@@ -63,8 +63,8 @@ const paystackBankNames = async (req: Request, res: Response) => {
     res.status(200).json({ banks })
     return;
   } catch (error) {
-    res.sendStatus(500)
     console.log(error)
+    res.sendStatus(500)
   }
 }
 

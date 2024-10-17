@@ -13,6 +13,7 @@ import { Server, WebSocket } from 'ws';
 
 import router from './shared/index.router';
 import sessionDts from '../types/session';
+import expressDts from '../types/express';
 
 // Initialize express app and create a server
 const app = express()

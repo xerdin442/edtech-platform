@@ -7,6 +7,7 @@ import './css/preLoading.css'
 import './css/landingPage.css'
 import './css/footer.css'
 import './css/SignUp.css'
+import './css/sideBar.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

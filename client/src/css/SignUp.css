@@ -58,7 +58,7 @@ height: 100%;
 }
 .formSection{
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 justify-content: center;
 flex-direction: column;
 }
@@ -108,6 +108,16 @@ flex-direction: column;
 align-items: flex-start;
 gap: 7px;
 }
+.error-message{
+    color: #F65252;
+}
+.signup-details2{
+    display: flex;
+width: 426px;
+flex-direction: column;
+align-items: flex-start;
+gap: 4px;
+}
 .signup-details p{
     color: #041822;
 font-family: "Open Sans";
@@ -115,11 +125,14 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
+margin-bottom: 0;
 }
 .signup-details input{
     border: none;
     background-color: transparent;
     outline: none;
+    width: 100%;
+    height: 100%;
 }
 .input-container{
     display: flex;
@@ -178,3 +191,36 @@ font-weight: 700;
 line-height: 24px;
 margin-bottom: 2rem;
 }
+.btnContainer button:hover{
+    cursor: pointer;
+    background: #B3D7FF;
+    color: #002F49F2;
+}
+
+.show-red {
+    border: 1px solid #F65252;
+  }
+  
+  .error-message {
+    color: #F65252;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .input-container img {
+    filter: hue-rotate(0deg) brightness(0) saturate(100%) sepia(100%) hue-rotate(-50deg); /* Red tint for images */
+  }
+  .red-error{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #F65252;
+  }
+ .signup-details .show-red input{
+    color: #F65252;
+  }
+  .show-red .icon-eye{
+    color: #F65252;
+  }

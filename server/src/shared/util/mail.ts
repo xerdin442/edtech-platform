@@ -10,8 +10,8 @@ export const sendEmail = async (school: ISchool, subject: string, content: strin
 
   const data = {
     sender: {
-      name: 'Event Ticketing App',
-      email: 'mudianthonio27@gmail.com',
+      name: 'Edudesks Team',
+      email: 'anitanwosu25@gmail.com',
     },
     to: [
       {

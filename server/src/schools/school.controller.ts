@@ -27,14 +27,17 @@ export const register = async (req: Request, res: Response) => {
     // If school check is successful, generate OTP and set the expiration time
     const random = `${Math.random() * 10 ** 16}`
     const otp = random[3] + random[9] + random[6] + random[12]
-    school.otp = +otp 
+    school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
+    school.otpSubject = 'Email Verification'
     await school.save()
 
     // Send the email verification OTP to the school email address
-    const subject = 'Email Verification'
     const emailContent = emailVerificationMail(school)
-    await sendEmail(school, subject, emailContent)
+    await sendEmail(school, school.otpSubject, emailContent)
+
+    // Save the school email address incase the school requests for the OTP to be re-sent
+    req.session.email = school.email
 
     // Create and sign an authentication token that expires in 3 hours
     const token = jwt.sign(
@@ -108,14 +111,14 @@ export const resetPassword = async (req: Request, res: Response) => {
     const otp = random[3] + random[9] + random[6] + random[12]
     school.otp = +otp
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
+    school.otpSubject = 'Password Reset'
     await school.save()
 
     // Send the OTP to the school email address
-    const subject = 'Password Reset'
     const emailContent = passwordResetMail(school)
-    await sendEmail(school, subject, emailContent)
+    await sendEmail(school, school.otpSubject, emailContent)
 
-    // Save the school email address in a session incase the school requests for the OTP to be re-sent
+    // Save the school email address incase the school requests for the OTP to be re-sent
     req.session.email = school.email
 
     // Notify school that the OTP for password reset has been sent
@@ -134,26 +137,23 @@ export const verifyOTP = async (req: Request, res: Response) => {
     // Check if the OTP is valid
     const school = await School.checkOTP(otp)
     if (!school) {
-      res.status(400).json({ error: 'Invalid OTP' })
+      res.status(422).json({ error: 'Invalid OTP' })
       return;
     }
 
     // Check if the OTP has expired
     if (school.otpExpiration < Date.now()) {
-      res.status(400).json({ error: 'This OTP has expired. Resend another OTP to your email' })
+      res.status(422).json({ error: 'This OTP has expired. Resend another OTP to your email' })
       return;
     }
 
-    // Reset OTP expiration time if the OTP is valid and save changes
+    // Reset the OTP, expiration time and subject after use
+    school.otp = undefined
     school.otpExpiration = undefined
+    school.otpSubject = undefined
     await school.save()
 
-    // Delete session created earlier for storing email and resending OTPs
-    req.session.destroy((err) => {
-      if (err) { console.log(err) }
-    })
-
-    res.status(200).json({ message: "Verification successful!", otp })
+    res.status(200).json({ message: "OTP verification successful!" })
     return;
   } catch (error) {
     console.log(error)
@@ -177,9 +177,9 @@ export const resendOTP = async (req: Request, res: Response) => {
     school.otpExpiration = Date.now() + (1 * 60 * 60 * 1000)
     await school.save()
 
-    const subject: string = 'Password Reset'
+    // Send email with new OTP to school email
     const emailContent: string = passwordResetMail(school)
-    await sendEmail(school, subject, emailContent) // Send email with new OTP to school email
+    await sendEmail(school, school.otpSubject, emailContent)
 
     // Notify school that OTP for password reset has been re-sent
     res.status(200).json({ message: 'Another OTP has been sent to your email' }).end()
@@ -192,20 +192,19 @@ export const resendOTP = async (req: Request, res: Response) => {
 
 export const changePassword = async (req: Request, res: Response) => {
   try {
-    const { otp } = req.query
     const { password } = req.body
 
     // Send error message if the OTP is invalid
-    const school = await School.checkOTP(otp as string)
+    const school = await School.getSchoolByEmail(req.session.email).select('+password')
     if (!school) {
-      res.status(400).json({ error: 'Invalid OTP' })
+      res.status(400).json({ error: 'School not found' })
       return;
     }
 
     // Check if new passowrd matches previous password
     const checkMatch = await bcrypt.compare(password, school.password)
     if (checkMatch) {
-      res.status(400).json({ error: 'New password cannot be set to same value as previous password' })
+      res.status(422).json({ error: 'New password cannot be same as previous password' })
       return;
     }
 
@@ -217,33 +216,15 @@ export const changePassword = async (req: Request, res: Response) => {
 
     // Change school's password, reset the OTP value and save changes
     school.password = hashedPassword
-    school.otp = undefined
     await school.save()
+
+    // Delete session created earlier for storing email and resending OTPs
+    req.session.destroy((err) => {
+      if (err) { console.log(err) }
+    })
 
     // Notify school if password reset is successful
-    res.status(200).send({ message: 'Password has been reset' }).end()
-    return;
-  } catch (error) {
-    console.log(error)
-    res.sendStatus(500)
-  }
-}
-
-export const verifyEmail = async (req: Request, res: Response) => {
-  try {
-    const { otp } = req.query
-
-    // Send error message if the OTP is invalid
-    const school = await School.checkOTP(otp as string)
-    if (!school) {
-      res.status(400).json({ error: 'Invalid OTP' })
-      return;
-    }
-
-    school.otp = undefined // Reset the OTP value after verification
-    await school.save()
-
-    res.status(200).send({ message: 'Email verification successful!' }).end()
+    res.status(200).send({ message: 'Password reset successful' }).end()
     return;
   } catch (error) {
     console.log(error)

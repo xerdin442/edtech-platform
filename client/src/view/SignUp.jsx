@@ -1,11 +1,11 @@
 import Group_7 from "/Group_7.svg";
 import Component_4 from "/Component_4.png";
 import lock from "/lock.svg";
-import envlope2 from "/envlope2.svg"; // Corrected spelling
+import envlope2 from "/envlope2.svg"; 
 import castle from "/castle.svg";
 import danger from "/danger.png";
-import { FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
-import Checkbox from "/Checkbox.png";
+import { FaEye, FaEyeSlash, } from "react-icons/fa";
+// import Checkbox from "/Checkbox.png";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";

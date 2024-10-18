@@ -1,8 +1,12 @@
 .signUp {
-    height: 100%;
+    height: auto;
     width: 100%; 
     margin: 0; 
     padding: 0;
+    display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 .signUp-div {
     display: flex;
@@ -10,7 +14,11 @@
     justify-content: space-between;
     width: 100%;
     height: 100%;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
 }
+
 .side-1 .signUp-header {
     display: flex;
     align-items: center;
@@ -31,27 +39,34 @@
     font-weight: 400;
 }
 .side-1 {
-    padding-left: 3rem;
     width: 100%;
     border-radius: 30px;
     background: #F8FBFD;
-    height: 100%;
+    height: 1024px;
+padding: 30px 63px;
+    display: flex;
+  flex-direction: column;
 }
 .side-1 .illustration {
     width: 539px;
     height: 539px;
     flex-shrink: 0;
 }
+
 .side-2 {
     display: flex;
     background-color: #FEFEFE;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     flex-shrink: 0;
     width: 50%;
     border-radius: 30px;
     height: 100%;
+    height: 1024px;
+    padding: 30px 63px;
 }
+
 .formSection {
     display: flex;
     justify-content: center;
@@ -110,7 +125,7 @@
 .signup-details p {
     color: #041822;
     font-family: "Open Sans";
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     margin-bottom: 0;
 }
@@ -178,36 +193,15 @@
 .show-red .icon-eye {
     color: #F65252;
 }
-
-/* Responsive for screens 1200px and below */
-@media (max-width: 1200px) {
-    .signUp-div {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .side-1,
-    .side-2 {
-        width: 100%;
-        padding: 1rem;
-        height: auto;
-        border-radius: 20px;
-    }
-
+.draft{
+    display: flex;
+    align-items: center;
+}
+/* Responsive for screens 1216px and below */
+@media (max-width: 1216px) {
     .side-1 .illustration {
         width: 100%;
         height: auto;
-        max-width: 300px;
-        margin: 0 auto;
-    }
-
-    .side-1 header p {
-        font-size: 30px;
-    }
-
-    .formSection h4 {
-        font-size: 24px;
-        text-align: center;
     }
 
     .signup-details,
@@ -221,43 +215,34 @@
         padding: 8px;
     }
 
+    .btnContainer{
+        width: 100%;
+    }
+
     .btnContainer button {
         width: 100%;
-        max-width: 350px;
         height: 48px;
         padding: 12px;
     }
 
-    .already-container {
+   }
+
+/* @media (max-width: 907px) {
+    .side-1,.side-2{
+        justify-content: center;
+        height: 900px;
+    }
+    .side-1{
+        padding-top: 0;
+    }
+    .side-2 h4{
+        font-size: 30px;
+    }
+    .formSection .already-container {
         font-size: 16px;
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
     }
-
-    .already-container p,
-    .already-container a {
-        font-size: 14px;
-    }
-
-    .error-message,
-    .red-error {
-        font-size: 12px;
-    }
-
-    .signUp {
-        background-image: none;
-    }
-}
-
-/* Responsive for screens 768px and below (tablet) */
-@media (max-width: 768px) {
-    .side-1 header p {
-        font-size: 24px;
-    }
-
     .formSection h4 {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .input-container {
@@ -274,41 +259,54 @@
     .already-container {
         font-size: 14px;
     }
-
-    .side-1 .illustration {
-        display: none;
+    .side-1 header img {
+        width: 30px;
+    }
+    .side-1 header p{
+        font-size: 40px;
     }
 
-}
+} */
 
 /* Responsive for screens 480px and below (mobile) */
-@media (max-width: 480px) {
-    .side-1 header p {
-        font-size: 20px;
+@media (max-width: 907px){
+    .signUp{
+        background-color: rgba(209, 204, 204, 0.541);
+        height: 1100px;
     }
-
-    .formSection h4 {
-        font-size: 18px;
+    .side-1, .side-2{
+        height: 700px;
     }
-
-    .input-container {
-        height: 32px;
+    .signUp-div{
+        flex-direction: column;
+        position: relative;
+        gap: 0;
     }
-
-    .btnContainer button {
-        width: 280px;
-        height: 40px;
-        padding: 8px;
-        font-size: 14px;
-        margin-left: 20px;
+    .side-1{
+        position: relative;
+        padding: 0;
+        justify-content: flex-start;
+        background-color: transparent;
+        
     }
-
-    .already-container {
-        font-size: 12px;
-    }
-
     .side-1 .illustration {
-        display: none;
+        position: absolute;
+        z-index: -2px;
+        top: 8rem;
+        opacity: 0.9;
+        flex-shrink: 0;
+        height: 900px;
+        object-fit: cover;
     }
-
+    .side-1 .signUp-header {
+        justify-content: center;
+        padding: 0;
+    }
+    .side-2{
+        position: absolute;
+        top: 8rem;
+        width: 100%;
+        justify-content: flex-start;
+        background-color: transparent;
+    }
 }

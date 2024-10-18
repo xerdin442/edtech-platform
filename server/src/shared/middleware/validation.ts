@@ -2,7 +2,7 @@ import { check, ValidationChain, validationResult } from "express-validator/lib"
 import bcrypt from 'bcryptjs'
 import { NextFunction, Request, Response } from "express";
 
-import { cloudinary } from "../config/storage";
+import { deleteUpload } from "../config/storage";
 import * as School from "../../schools/school.service";
 
 const PHONE_PATTERN = /^(07|08|09)[01]\d{8}$/
@@ -110,20 +110,7 @@ export const handleValidationErrors = (req: Request, res: Response, next: NextFu
   if (!errors.isEmpty()) {
     const error = errors.array()[0].msg
 
-    // Check for any uploaded image and delete from cloud storage
-    if (req.file && req.file.path) {
-      // Extract the public ID of the image from the file path
-      const publicId = req.file.path.split('/').slice(-2).join('/').replace(/\.[^/.]+$/, "");
-
-      // Delete the uploaded image from Cloudinary
-      cloudinary.destroy(publicId, (error, result) => {
-        if (error) {
-          console.error('Failed to delete image from Cloudinary:', error);
-        } else {
-          console.log('Image deleted from Cloudinary');
-        }
-      })
-    }
+    deleteUpload(req) // Delete any file uploads from Cloudinary
 
     res.status(422).json({ error })
     return;

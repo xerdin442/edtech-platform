@@ -1,27 +1,25 @@
-import { v2 } from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 import multer from "multer";
 import { CloudinaryStorage } from "multer-storage-cloudinary";
 import { Request } from "express";
 
 // Cloudinary configuration
-v2.config({
+cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET,
   secure: true
 });
 
-export const cloudinary = v2.uploader
-
 export const upload = (folderName: string) => {
   const imageMimetypes: string[] = ['image/png', 'image/heic', 'image/jpeg', 'image/webp', 'image/heif']
 
   // Configure cloudinary storage otpions
   const storage = new CloudinaryStorage({
-    cloudinary: v2,
+    cloudinary: cloudinary,
     params: (req, file) => {
       const public_id = new Date().toISOString().replace(/:/g, '-') + '-' + file.originalname;
-      
+
       return {
         folder: folderName,
         public_id,
@@ -32,7 +30,7 @@ export const upload = (folderName: string) => {
       };
     }
   });
-  
+
   // Function to validate the format of the file in the incoming request
   const fileFilter = (req: Request, file: Express.Multer.File, cb: multer.FileFilterCallback) => {
     if (imageMimetypes.includes(file.mimetype)) {
@@ -48,3 +46,19 @@ export const upload = (folderName: string) => {
     fileFilter
   });
 };
+
+export const deleteUpload = (req: Request) => {
+  if (req.file && req.file.path) {
+    // Extract the public ID of the image from the file path
+    const publicId = req.file.path.split('/').slice(-2).join('/').replace(/\.[^/.]+$/, "");
+
+    // Delete the uploaded image from Cloudinary
+    cloudinary.uploader.destroy(publicId, (error, result) => {
+      if (error) {
+        console.error('Failed to delete image from Cloudinary:', error);
+      } else {
+        console.log('Image deleted from Cloudinary');
+      }
+    })
+  }
+}

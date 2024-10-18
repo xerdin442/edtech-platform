@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken'
 import * as School from './school.service';
 import { emailVerificationMail, passwordResetMail, sendEmail } from '../shared/util/mail'
 import { verifyAccountDetails } from '../shared/util/paystack';
+import { deleteUpload } from '../shared/config/storage';
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -269,6 +270,8 @@ export const updateProfile = async (req: Request, res: Response) => {
       res.status(200).json({ message: "Profile updated successfully", school }).end()
       return;
     } else if (unverified) {
+      deleteUpload(req) // Delete any file uploads from Cloudinary
+      
       res.status(422).json({ error: 'Bank verification unsuccessful. Kindly input your account details in the correct order' })
       return;
     }

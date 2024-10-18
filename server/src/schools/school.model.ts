@@ -9,6 +9,8 @@ export interface ISchool extends Document {
   phone?: string
   balance: number
   pin: number
+  students: number
+  employees: number
   otp?: number,
   otpExpiration?: number
   otpSubject?: string
@@ -24,7 +26,9 @@ const schoolSchema = new Schema<ISchool>({
   phone: { type: String },
   address: { type: String },
   balance: { type: Number, required: true, default: 0 },
-  pin: { type: Number, required: true, default: 0 },
+  pin: { type: Number, required: true, default: 0, select: false },
+  students: { type: Number, required: true, default: 0 },
+  employees: { type: Number, required: true, default: 0 },
   otp: { type: Number },
   otpExpiration: { type: Number },
   otpSubject: { type: String },

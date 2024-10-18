@@ -30,8 +30,8 @@ export const updateProfile = async (id: string, values: Record<string, any>) => 
     throw new Error('An error occured while updating school profile')
   }
 
-  // school.recipient = await createTransferRecipient(school.bankDetails)
-  // await school.save()
+  school.recipient = await createTransferRecipient(school.bankDetails)
+  await school.save()
 
   return school;
 }

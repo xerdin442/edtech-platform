@@ -29,6 +29,8 @@ Creates a new school account.
     "password": "$2a$12$7Qu.NnF2LKqxkDDU5ayTjOJ5IwlfJVEoIGd51Nq42/6UCSrD6PpwC",
     "balance": 0,
     "pin": 0,
+    "students": 0,
+    "employees": 0,
     "_id": "67111d9a38049bf9f1d850c0",
     "__v": 0,
     "otp": 6951,
@@ -166,4 +168,3 @@ Change the password of an existing account.
   "message": "Password reset successful"
 }
 ```
-

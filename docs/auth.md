@@ -19,6 +19,8 @@ Creates a new school account.
 
 **Response Body**
 
+`status` `201`
+
 ```json
 {
   "message": "Registration successful!",
@@ -31,6 +33,7 @@ Creates a new school account.
     "pin": 0,
     "students": 0,
     "employees": 0,
+    "regNumber": 850000,
     "_id": "67111d9a38049bf9f1d850c0",
     "__v": 0,
     "otp": 6951,
@@ -58,6 +61,8 @@ Sign in to an existing school account.
 
 **Response Body**
 
+`status` `200`
+
 ```json
 {
   "message": "Login successful",
@@ -76,6 +81,8 @@ Sign out of an existing school account.
 None
 
 **Response Body**
+
+`status` `200`
 
 ```json
 {
@@ -99,6 +106,8 @@ Verify OTP for email verification or password reset.
 
 **Response Body**
 
+`status` `200`
+
 ```json
 {
   "message": "OTP verification successful!"
@@ -116,6 +125,8 @@ Request that the OTP be re-sent.
 None
 
 **Response Body**
+
+`status` `200`
 
 ```json
 {
@@ -140,6 +151,8 @@ Request for a password reset.
 
 **Response Body**
 
+`status` `200`
+
 ```json
 {
   "message": "Password reset OTP has been sent to your email"
@@ -162,6 +175,8 @@ Change the password of an existing account.
 ```
 
 **Response Body**
+
+`status` `200`
 
 ```json
 {

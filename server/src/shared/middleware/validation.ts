@@ -10,7 +10,7 @@ const ACCOUNT_NUMBER_PATTERN = /^\d{10}$/
 
 export const validateSignUp: ValidationChain[] = [
   check('name').trim()
-    .isLength({ min: 5, max: 100 }).withMessage('School name must be between 5 to 100 characters long'),
+    .isLength({ min: 5, max: 100 }).withMessage('School name must be between 5 and 100 characters long'),
 
   check('email').normalizeEmail()
     .isEmail().withMessage('Please enter a valid email')
@@ -86,7 +86,7 @@ export const validatePasswordReset: ValidationChain[] = [
 
 export const validateProfileUpdate: ValidationChain[] = [
   check('name').trim()
-    .isLength({ min: 5, max: 100 }).withMessage('School name must be between 5 to 100 characters long'),
+    .isLength({ min: 5, max: 100 }).withMessage('School name must be between 5 and 100 characters long'),
 
   check('email').normalizeEmail()
     .isEmail().withMessage('Please enter a valid email'),

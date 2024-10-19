@@ -18,11 +18,15 @@ export const register = async (req: Request, res: Response) => {
       return;
     }
 
+    // Generate school registration number
+    const regNumber = `${Math.ceil(Math.random() * 10)}` + `${Math.ceil(Math.random() * 10)}`
+
     const school = await School.createSchool({
       email,
       name,
       password: hashedPassword,
-      logo: process.env.DEFAULT_IMAGE
+      logo: process.env.DEFAULT_IMAGE,
+      regNumber: +regNumber * 10000
     })
 
     // If school check is successful, generate OTP and set the expiration time

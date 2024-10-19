@@ -12,6 +12,8 @@ None
 
 **Response Body**
 
+`status` `200`
+
 ```json
 {
   "school": {
@@ -27,6 +29,7 @@ None
     "balance": 357230,
     "students": 270,
     "employees": 41,
+    "regNumber": 850000,
     "__v": 0,
     "address": "12, School Road, Wakanda",
     "phone": "09049892368",
@@ -58,6 +61,8 @@ Update school details.
 
 **Response Body**
 
+`status` `200`
+
 ```json
 {
   "message": "Profile updated successfully",
@@ -74,6 +79,7 @@ Update school details.
     "balance": 357230,
     "students": 270,
     "employees": 41,
+    "regNumber": 850000,
     "__v": 0,
     "address": "12, School Road,Beside City Metropolis, Wakanda",
     "phone": "09049892368",
@@ -93,6 +99,8 @@ Delete an existing school account.
 None
 
 **Response Body**
+
+`status` `200`
 
 ```json
 {

@@ -18,7 +18,7 @@ export interface IStudent extends Document {
   address: string
   fees: number
   totalAmountPaid: number
-  status: 'paid' | 'unpaid' | 'part' | 'scholarship'
+  status: 'paid' | 'unpaid' | 'part'
   guardians?: {
     father: { lastName: string, firstName: string, phone: string, email: string, address: string }
     mother: { lastName: string, firstName: string, phone: string, email: string, address: string }
@@ -55,7 +55,7 @@ const studentSchema = new Schema<IStudent>({
   status: {
     type: String,
     required: true,
-    enum: ['unpaid', 'paid', 'part', 'scholarship'],
+    enum: ['unpaid', 'paid', 'part'],
     default: 'unpaid'
   },
 

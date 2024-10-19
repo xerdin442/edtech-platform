@@ -11,6 +11,15 @@ export const addStudent = async (values: Record<string, any>) => {
   return student;
 }
 
+export const getStudentById = async (id: string) => {
+  const student = await Student.findById(id)
+  if (!student) {
+    throw new Error('An error occured while fetching student details')
+  }
+
+  return student;
+}
+
 export const updateProfile = async (id: string, values: Record<string, any>) => {
   const student = await Student.findByIdAndUpdate(id, values, { new: true })
   if (!student) {

@@ -31,6 +31,7 @@ export const updateProfile = async (id: string, values: Record<string, any>) => 
   }
 
   school.recipient = await createTransferRecipient(school.bankDetails)
+  // school.customer
   await school.save()
 
   return school;

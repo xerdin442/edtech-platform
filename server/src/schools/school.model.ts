@@ -16,6 +16,7 @@ export interface ISchool extends Document {
   otpExpiration?: number
   otpSubject?: string
   recipient?: string
+  customer?: string
   bankDetails?: { accountName: string, accountNumber: string, bankName: string }
 }
 
@@ -35,6 +36,7 @@ const schoolSchema = new Schema<ISchool>({
   otpExpiration: { type: Number },
   otpSubject: { type: String },
   recipient: { type: String },
+  customer: { type: String },
   bankDetails: {
     accountName: { type: String },
     accountNumber: { type: String },

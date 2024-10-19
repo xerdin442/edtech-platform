@@ -8,6 +8,8 @@ import './css/landingPage.css'
 import './css/footer.css'
 import './css/SignUp.css'
 import './css/sideBar.css'
+import './css/signIn.css'
+import './css/opt.css'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <App />

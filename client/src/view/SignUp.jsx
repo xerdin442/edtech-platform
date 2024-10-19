@@ -3,9 +3,7 @@ import Component_4 from "/Component_4.png";
 import lock from "/lock.svg";
 import envlope2 from "/envlope2.svg"; 
 import castle from "/castle.svg";
-import danger from "/danger.png";
-import { FaEye, FaEyeSlash, } from "react-icons/fa";
-// import Checkbox from "/Checkbox.png";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,111 +11,46 @@ import { Link, useNavigate } from "react-router-dom";
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
   const [formData, setFormData] = useState({
     schoolName: "",
     schoolEmail: "",
     schoolPassword: "",
     schoolConfirmPassword: "",
   });
-  const [errors, setErrors] = useState({});
-
+  const [backendError, setBackendError] = useState(""); 
   const navigate = useNavigate();
 
-  // Toggle password visibility
+  // Toggle Password Visibility
   const togglePasswordVisibility = () => setShowPassword((prev) => !prev);
   const toggleConfirmPasswordVisibility = () =>
     setShowConfirmPassword((prev) => !prev);
 
-  // Handle input changes
+  // Handle Input Changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: "" })); // Reset error on change
   };
 
-  // Toggle checkbox state
-  const toggleCheckbox = () => setIsChecked((prev) => !prev);
-
-  // Form validation function
-  const validateForm = () => {
-    const { schoolName, schoolEmail, schoolPassword, schoolConfirmPassword } = formData;
-    let validationErrors = {};
-
-    if (!schoolName) {
-      validationErrors.schoolName = (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> School name is required
-        </span>
-      );
-    }
-    if (!schoolEmail) {
-      validationErrors.schoolEmail = (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> Email is required
-        </span>
-      );
-    } else {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(schoolEmail)) {
-        validationErrors.schoolEmail = (
-          <span className="red-error">
-            <img src={danger} alt="Error Icon" /> Invalid email address. Try again.
-          </span>
-        );
-      }
-    }
-    if (!schoolPassword) {
-      validationErrors.schoolPassword = (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> Password is required
-        </span>
-      );
-    } else if (schoolPassword.length < 8) {
-      validationErrors.schoolPassword = (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> Password must be at least 8 characters long
-        </span>
-      );
-    }
-    if (!schoolConfirmPassword) {
-      validationErrors.schoolConfirmPassword = (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> Please confirm your password
-        </span>
-      );
-    } else if (schoolPassword !== schoolConfirmPassword) {
-      validationErrors.schoolConfirmPassword = 
-      (
-        <span className="red-error">
-          <img src={danger} alt="Error Icon" /> Re-enter the password correctly.
-        </span>
-      );
-    }
-
-    setErrors(validationErrors);
-
-    return Object.keys(validationErrors).length === 0;
-  };
-
-  // Form submission handler
+  // Form Submission Handler
   const handleRegister = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
-
-    const { schoolName, schoolEmail, schoolPassword } = formData;
 
     try {
       const response = await axios.post(
         "https://edudesks.onrender.com/api/auth/register",
-        { name: schoolName, email: schoolEmail, password: schoolPassword }
+        {
+          name: formData.schoolName,
+          email: formData.schoolEmail,
+          password: formData.schoolPassword,
+        }
       );
 
-      console.log(response.data.message);
+     
       localStorage.setItem("authToken", response.data.token);
-      navigate("/sign-in");
+      navigate("/opt-verify");
     } catch (error) {
-      console.error(error.response?.data?.error || "Registration failed");
+   
+      setBackendError(error.response?.data?.error || "Registration failed");
     }
   };
 
@@ -127,15 +60,9 @@ const SignUp = () => {
         <div className="side-1">
           <header className="signUp-header">
             <img src={Group_7} alt="Landing Page Icon" />
-            <p>
-              du<span>desks</span>.
-            </p>
+            <p>du<span>desks</span>.</p>
           </header>
-          <img
-            src={Component_4}
-            alt="Component Illustration"
-            className="illustration"
-          />
+          <img src={Component_4} alt="Component Illustration" className="illustration" />
         </div>
 
         <div className="side-2">
@@ -151,7 +78,7 @@ const SignUp = () => {
               {/* School Name */}
               <div className="signup-details">
                 <p>School Name</p>
-                <div className={`input-container ${errors.schoolName ? 'show-red' : ''}`}>
+                <div className="input-container">
                   <img src={castle} alt="Castle Icon" />
                   <input
                     type="text"
@@ -159,15 +86,15 @@ const SignUp = () => {
                     value={formData.schoolName}
                     onChange={handleChange}
                     placeholder="Enter your school name"
+                    required
                   />
                 </div>
-                {errors.schoolName && <p className="error-message">{errors.schoolName}</p>}
               </div>
 
               {/* School Email */}
               <div className="signup-details">
                 <p>School Email</p>
-                <div className={`input-container ${errors.schoolEmail ? 'show-red' : ''}`}>
+                <div className="input-container">
                   <img src={envlope2} alt="Envelope Icon" />
                   <input
                     type="email"
@@ -175,15 +102,15 @@ const SignUp = () => {
                     value={formData.schoolEmail}
                     onChange={handleChange}
                     placeholder="Enter your school email"
+                    required
                   />
                 </div>
-                {errors.schoolEmail && <p className="error-message">{errors.schoolEmail}</p>}
               </div>
 
               {/* Password */}
               <div className="signup-details">
                 <p>Choose Password</p>
-                <div className={`input-container password ${errors.schoolPassword ? 'show-red' : ''}`}>
+                <div className="input-container password">
                   <img src={lock} alt="Lock Icon" />
                   <input
                     type={showPassword ? "text" : "password"}
@@ -191,18 +118,18 @@ const SignUp = () => {
                     value={formData.schoolPassword}
                     onChange={handleChange}
                     placeholder="Enter your password"
+                    required
                   />
                   <div className="eyeIcon" onClick={togglePasswordVisibility}>
-                    {showPassword ? <FaEyeSlash className="icon-eye"/> : <FaEye className="icon-eye"/>}
+                    {showPassword ? <FaEyeSlash className="icon-eye" /> : <FaEye className="icon-eye" />}
                   </div>
                 </div>
-                {errors.schoolPassword && <p className="error-message">{errors.schoolPassword}</p>}
               </div>
 
               {/* Confirm Password */}
               <div className="signup-details">
                 <p>Confirm Password</p>
-                <div className={`input-container password ${errors.schoolConfirmPassword ? 'show-red' : ''}`}>
+                <div className="input-container password">
                   <img src={lock} alt="Lock Icon" />
                   <input
                     type={showConfirmPassword ? "text" : "password"}
@@ -210,24 +137,16 @@ const SignUp = () => {
                     value={formData.schoolConfirmPassword}
                     onChange={handleChange}
                     placeholder="Confirm your password"
+                    required
                   />
                   <div className="eyeIcon" onClick={toggleConfirmPasswordVisibility}>
-                    {showConfirmPassword ? <FaEyeSlash className="icon-eye"/> : <FaEye className="icon-eye"/>}
+                    {showConfirmPassword ? <FaEyeSlash className="icon-eye" /> : <FaEye className="icon-eye" />}
                   </div>
                 </div>
-                {errors.schoolConfirmPassword && <p className="error-message">{errors.schoolConfirmPassword}</p>}
               </div>
 
-              {/* Checkbox */}
-              <div className="draft">
-                <input
-                  type="checkbox"
-                  checked={isChecked}
-                  onChange={toggleCheckbox}
-                  style={{ cursor: "pointer" }}
-                />
-                <p>Save drafts</p>
-              </div>
+              {/* Backend Error Message */}
+              {backendError && <p className="error-message">{backendError}</p>}
 
               {/* Submit Button */}
               <div className="btnContainer">

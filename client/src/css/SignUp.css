@@ -309,4 +309,31 @@ padding: 30px 63px;
         justify-content: flex-start;
         background-color: transparent;
     }
+    @media (max-width: 480px) {
+    .side-1 header p {
+        font-size: 20px;
+    }
+
+    .formSection h4 {
+        font-size: 18px;
+    }
+
+    .input-container {
+        height: 32px;
+    }
+
+    .btnContainer button {
+        width: 100%;
+        height: 40px;
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .already-container {
+        font-size: 12px;
+    }
+
+    .side-1 .illustration {
+        display: none;
+    }
 }

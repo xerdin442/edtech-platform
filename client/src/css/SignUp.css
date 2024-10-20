@@ -94,9 +94,10 @@ padding: 30px 63px;
 }
 .already-container a {
     color: #4B8BBE;
-    font-family: Inter;
+    font-family: "Inter";
     font-weight: 600;
     line-height: 20px;
+    text-decoration: none;
 }
 .formSection form {
     display: flex;
@@ -155,7 +156,7 @@ padding: 30px 63px;
     justify-content: center;
     align-items: center;
     border-radius: 33px;
-    background: #59676E;
+    background: rgba(0, 47, 73, 0.95);
     border: none;
     color: #F8FBFD;
     font-family: "Open Sans";

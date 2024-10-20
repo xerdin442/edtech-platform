@@ -4,6 +4,7 @@ const LandingPart2 = ()=>{
 
     return(
         <>
+            <main className="main-landing-part-container2">
             <section className="landing-part-2-container">
                 <section className="part-1">
                     <h3>Manage School Finances More Efficiently With Edudesks</h3>
@@ -15,6 +16,11 @@ const LandingPart2 = ()=>{
                     <img src={Frame_1000008614} alt="Frame_1000008614" />
                 </section>
             </section>
+
+            <section className="landing-part-2b-container">
+                
+            </section>
+            </main>
         </>
     )
 }

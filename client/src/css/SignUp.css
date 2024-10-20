@@ -31,7 +31,7 @@
 }
 .side-1 header p {
     color: rgba(0, 47, 73, 0.95);
-    font-family: Montserrat;
+    font-family: "Montserrat";
     font-size: 50px;
     font-weight: 700;
 }
@@ -43,7 +43,9 @@
     border-radius: 30px;
     background: #F8FBFD;
     height: 1024px;
-padding: 30px 63px;
+    padding-right: 63px; 
+    padding-bottom: 30px;
+    padding-left: 63px;
     display: flex;
   flex-direction: column;
 }
@@ -57,14 +59,15 @@ padding: 30px 63px;
     display: flex;
     background-color: #FEFEFE;
     align-items: center;
-    justify-content: center;
     flex-direction: column;
     flex-shrink: 0;
     width: 50%;
     border-radius: 30px;
     height: 100%;
     height: 1024px;
-    padding: 30px 63px;
+    padding-right: 63px; 
+    padding-bottom: 30px;
+    padding-left: 63px;
 }
 
 .formSection {

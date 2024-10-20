@@ -43,9 +43,7 @@
     border-radius: 30px;
     background: #F8FBFD;
     height: 1024px;
-    padding-right: 63px; 
-    padding-bottom: 30px;
-    padding-left: 63px;
+padding: 30px 63px;
     display: flex;
   flex-direction: column;
 }
@@ -59,15 +57,14 @@
     display: flex;
     background-color: #FEFEFE;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     flex-shrink: 0;
     width: 50%;
     border-radius: 30px;
     height: 100%;
     height: 1024px;
-    padding-right: 63px; 
-    padding-bottom: 30px;
-    padding-left: 63px;
+    padding: 30px 63px;
 }
 
 .formSection {

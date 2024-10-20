@@ -133,3 +133,11 @@
   color: #59676E;
   text-align: justify;
 }
+.landing-part-2-container .part-2{
+  display: flex;
+  align-items: end;
+  gap: 0;
+}
+.landing-part-2-container .part-2 .circular-img{
+  margin-right: -2rem;
+}

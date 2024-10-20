@@ -11,7 +11,7 @@ const LandingPart2 = ()=>{
                 </section>
 
                 <section className="part-2">
-                    <img src={Circular_text} alt="Circular_text" />
+                    <img src={Circular_text} alt="Circular_text"  className="circular-img"/>
                     <img src={Frame_1000008614} alt="Frame_1000008614" />
                 </section>
             </section>

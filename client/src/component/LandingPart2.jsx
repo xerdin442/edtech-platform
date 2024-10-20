@@ -1,5 +1,10 @@
 import Frame_1000008614 from "/Frame_1000008614.png";
 import Circular_text from "/Circular_text.png";
+import Frame_1000008606 from "/Frame_1000008606.png";
+import Frame_1000008609 from "/Frame_1000008609.png";
+import Frame_1000008610 from "/Frame_1000008610.png";
+import Frame_1000008604 from "/Frame_1000008604.png";
+import Frame_1000008605 from "/Frame_1000008605.png";
 const LandingPart2 = ()=>{
 
     return(
@@ -18,7 +23,21 @@ const LandingPart2 = ()=>{
             </section>
 
             <section className="landing-part-2b-container">
-                
+                <header>
+                    <h3>Comprehensive Features To Manage Your School’s Finances</h3>
+                    <h6>Streamline your school's financial operations by efficiently managing salary payments and expenses.</h6>
+                </header>
+                <section className="section-part">
+                    <div className="div-part">
+                        <img src={Frame_1000008606} alt="Frame_1000008606"/>
+                        <img src={Frame_1000008609} alt="Frame_1000008609"/>
+                        <img src={Frame_1000008610} alt="Frame_1000008610"/>
+                    </div>
+
+                    <div className="div-part2">
+
+                    </div>
+                </section>
             </section>
             </main>
         </>

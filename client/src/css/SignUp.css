@@ -7,6 +7,7 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  background-color: #FEFEFE;
 }
 .signUp-div {
     display: flex;
@@ -41,7 +42,7 @@
 .side-1 {
     width: 100%;
     border-radius: 30px;
-    background: #F8FBFD;
+    background: #DDE4F2;
     height: 1024px;
 padding: 30px 63px;
     display: flex;
@@ -61,7 +62,6 @@ padding: 30px 63px;
     flex-direction: column;
     flex-shrink: 0;
     width: 50%;
-    border-radius: 30px;
     height: 100%;
     height: 1024px;
     padding: 30px 63px;
